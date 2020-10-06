@@ -26,7 +26,7 @@ export default function RegisterView(props) {
       })
       .then(function (response) {
         console.log(response);
-        if (response.status == 200)
+        if (response.status === 200)
         {registersucces();}
 
       })

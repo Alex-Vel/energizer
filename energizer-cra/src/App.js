@@ -22,11 +22,15 @@ class App extends React.Component {
       isAuthenticated: false,
       chargingPoints : [],
       userInfo: [],
-      UserReceipts: []
+      UserReceipts: [],
+      lat: 65.009784,  
+      lng: 25.473127,
+      zoom: 13
     };
   }
 
   onLogin = () => {
+    this.getChargingData();
     this.setState({ isAuthenticated: true })
   }
 
@@ -42,14 +46,25 @@ class App extends React.Component {
     })
   }
 
+  getChargingData() {
+    
+      axios.get('https://api.openchargemap.io/v3/poi/?output=json&countrycode=fi&maxresults=20&compact=true&verbose=false&latitude=65.009784&longitude=25.473127')
+        .then((response) => {
+          this.setState({ chargingPoints: response.data })
+        });
+    
+  }
+
   
 render() { 
 return (
+  <div className = "App"> 
   <Router>
     <Route path="/" exact render={
       (routeProps) =>
         <LoginView
           loginSuccess = { this.onLogin }
+          loginSucces = {this.getChargingData}
           loginFail = { this.onLoginFail }
           userInfo={ this.state.userInfo }
           redirectPathOnSuccess="/example"
@@ -60,8 +75,11 @@ return (
     <ProtectedRoute isAuthenticated={this.state.isAuthenticated} path="/example" exact render={
         (routeProps) =>
           <ProtectedView
-            loadProtectedData={ this.loadProtectedData }
-            someData={ this.state.someData }
+            chargingPoints={ this.state.chargingPoints }
+            lat = {this.state.lat}
+            lng = {this.state.lng}
+            zoom = {this.state.zoom}
+            {...routeProps}
             />
       }>
     </ProtectedRoute>
@@ -97,6 +115,7 @@ return (
    
     
   </Router>
+  </div>
 )
 }
 }

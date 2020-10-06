@@ -1,6 +1,8 @@
-import React from 'react'
-
+import React from 'react';
+import MapComponent from './MapComponent';
 export default function ProtectedView(props) {
+
+
   debugger
   return (
     <div>
@@ -9,11 +11,11 @@ export default function ProtectedView(props) {
         You should not be able to access this without being logged in
       </div>
       <div>
-        <button onClick={ props.loadProtectedData }>Click to load protected content from API</button>
-      </div>
-      <div style={{ color: "red" }}>
-        Protected content result:
-        { props.someData.map((d, i) => <div key={i}>{d.name}</div> ) }
+      <MapComponent chargingPoints={props.chargingPoints}
+      lat = {props.lat}
+      lng = {props.lng}
+      zoom = {props.zoom}
+      />
       </div>
 
     </div>
