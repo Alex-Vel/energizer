@@ -1,9 +1,11 @@
 import React from 'react';
 import MapComponent from './MapComponent';
+import ChargerInfo from './ChargerInfo';
+
 export default function ProtectedView(props) {
 
 
-  debugger
+
   return (
     <div>
       <h1>This view is example of a protected view</h1>
@@ -15,7 +17,11 @@ export default function ProtectedView(props) {
       lat = {props.lat}
       lng = {props.lng}
       zoom = {props.zoom}
+      setSelectedCharger = {props.setSelectedCharger}
       />
+      </div>
+      <div>
+     <ChargerInfo selectedCharger={props.selectedCharger} />
       </div>
 
     </div>

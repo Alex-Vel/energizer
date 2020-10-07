@@ -1,11 +1,14 @@
 import React from 'react'
 import { Map, TileLayer, Marker, Popup } from 'react-leaflet'
-import axios from 'axios';
 
 export default function MapComponent(props)
 {
-  console.log(props.chargingPoints[1]);
 
+
+  function markerClick(chargingPoint)
+  {
+    props.setSelectedCharger(chargingPoint);
+  }
    return(
     props.chargingPoints ?
 
@@ -23,17 +26,18 @@ export default function MapComponent(props)
 
     {
     props.chargingPoints.map(chargingPoint => {
-    const point = [chargingPoint['AddressInfo']['Latitude'],chargingPoint['AddressInfo']['Longitude']]
+    const point = [chargingPoint['Latitude'],chargingPoint['Longitude']]
          
 
 return (
-    <Marker position={point} key={chargingPoint['ID']} >
+    <Marker onClick={() => markerClick(chargingPoint)} position={point} key={chargingPoint['ID']} >
          <Popup>
-            <span>ADDRESS: {chargingPoint['addressline1']}, {chargingPoint['Town']} - {chargingPoint['Postcode']}</span>
+            <span>ADDRESS: {chargingPoint['AddressLine1']}, {chargingPoint['Town']} - {chargingPoint['Postcode']}</span>
           <br/>
-            <span>BATTALION: {chargingPoint['battalion']}</span><br/>
+            <span>Wattage: {chargingPoint['PowerKW']}</span><br/>
          </Popup>
      </Marker>
+
   )
  })
 }
