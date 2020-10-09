@@ -14,7 +14,8 @@
     "DistanceUnit": 2,
     "ConnectionType": "Type2",
     "PowerKW": "22kWh",
-    "Price" : 0
+    "Price" : 0,
+    "Code": "1K52B"
   },
   {
     "ID": 57067,
@@ -31,7 +32,8 @@
     "DistanceUnit": 2,
     "ConnectionType": "CCS",
     "PowerKW": "50kWh",
-    "Price" : 15
+    "Price" : 15,
+    "Code": "GKJ21"
   },
   {
     "ID": 99987,
@@ -47,7 +49,8 @@
     "DistanceUnit": 2,
     "ConnectionType": "Type2",
     "PowerKW": "22kWh",
-    "Price" : 0
+    "Price" : 0,
+    "Code": "SDL12"
   },
   {
     "ID": 31423,
@@ -64,7 +67,8 @@
     "DistanceUnit": 2,
     "ConnectionType": "CCS",
     "PowerKW": "100kWh",
-    "Price" : 30
+    "Price" : 30,
+    "Code": "22KRW"
   },
   {
     "ID": 134557,
@@ -81,7 +85,8 @@
     "DistanceUnit": 2,
     "ConnectionType": "Type2",
     "PowerKW": "22kWh",
-    "Price" : 0
+    "Price" : 0,
+    "Code": "ASD32"
   },
   {
     "ID": 31420,
@@ -98,7 +103,8 @@
     "DistanceUnit": 2,
     "ConnectionType": "Type2",
     "PowerKW": "22kWh",
-    "Price" : 0
+    "Price" : 0,
+    "Code": "QWERT"
   },
   {
     "ID": 157599,
@@ -115,7 +121,8 @@
     "DistanceUnit": 2,
     "ConnectionType": "CCS",
     "PowerKW": "150kWh",
-    "Price" : 45
+    "Price" : 45,
+    "Code": "WERT3"
   },
   {
     "ID": 24698,
@@ -132,7 +139,8 @@
     "DistanceUnit": 2,
     "ConnectionType": "Type2",
     "PowerKW": "22kWh",
-    "Price" : 0
+    "Price" : 0,
+    "Code": "VBD32"
   },
   {
     "ID": 31421,
@@ -149,7 +157,8 @@
     "DistanceUnit": 2,
     "ConnectionType": "Type2",
     "PowerKW": "22kWh",
-    "Price" : 0
+    "Price" : 0,
+    "Code": "BLER1"
   },
   {
     "ID": 134559,
@@ -166,7 +175,8 @@
     "DistanceUnit": 2,
     "ConnectionType": "Type2",
     "PowerKW": "22kWh",
-    "Price" : 0
+    "Price" : 0,
+    "Code": "OEO22"
   },
   {
     "ID": 135130,
@@ -183,7 +193,8 @@
     "DistanceUnit": 2,
     "ConnectionType": "CCS",
     "PowerKW": "50kWh",
-    "Price" : 15
+    "Price" : 15,
+    "Code": "34OFO"
   },
   {
     "ID": 31424,
@@ -200,7 +211,8 @@
     "DistanceUnit": 2,
     "ConnectionType": "Type2",
     "PowerKW": "22kWh",
-    "Price" : 0
+    "Price" : 0,
+    "Code": "PWPWP1"
   },
   {
     "ID": 31418,
@@ -217,7 +229,8 @@
     "DistanceUnit": 2,
     "ConnectionType": "Type2",
     "PowerKW": "22kWh",
-    "Price" : 0
+    "Price" : 0,
+    "Code": "PQP12"
   },
   {
     "ID": 72015,
@@ -234,7 +247,8 @@
     "DistanceUnit": 2,
     "ConnectionType": "CCS",
     "PowerKW": "100kWh",
-    "Price" : 30
+    "Price" : 30,
+    "Code": "IRI23"
   },
   {
     "ID": 31417,
@@ -251,7 +265,8 @@
     "DistanceUnit": 2,
     "ConnectionType": "Type2",
     "PowerKW": "22kWh",
-    "Price" : 0
+    "Price" : 0,
+    "Code": "OSDOV"
   },
   {
     "ID": 31416,
@@ -268,7 +283,8 @@
     "DistanceUnit": 2,
     "ConnectionType": "Type2",
     "PowerKW": "22kWh",
-    "Price" : 0
+    "Price" : 0,
+    "Code": "12EEQ"
   },
   {
     "ID": 168887,
@@ -283,7 +299,8 @@
     "DistanceUnit": 2,
     "ConnectionType": "Type2",
     "PowerKW": "22kWh",
-    "Price" : 0
+    "Price" : 0,
+    "Code": "BNK11"
   },
   {
     "ID": 31415,
@@ -300,7 +317,8 @@
     "DistanceUnit": 2,
     "ConnectionType": "Type2",
     "PowerKW": "22kWh",
-    "Price" : 0.20
+    "Price" : 0.20,
+    "Code": "NKN33"
   },
   {
     "ID": 75111,
@@ -317,7 +335,8 @@
     "DistanceUnit": 2,
     "ConnectionType": "Type2",
     "PowerKW": "22kWh",
-    "Price" : 0.20
+    "Price" : 0.20,
+    "Code": "OSO14"
     
   },
   {
@@ -334,6 +353,7 @@
     "DistanceUnit": 2,
     "ConnectionType": "Type2",
     "PowerKW": "22kWh",
-    "Price" : 0.20
+    "Price" : 0.20,
+    "Code": "OKNO1"
   }
 ]

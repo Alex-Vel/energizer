@@ -5,10 +5,20 @@ import React from 'react';
 export default function ChargerInfo(props) {
 
 let output = ""; 
+function goChargerView () 
+{
+    props.ChargeViewHandler();
+}
 
-if(props.selectedCharger != null)
+if(props.selectedCharger['ID'] != undefined)
 { 
-output = <div>ID:{props.selectedCharger["ID"]}</div>
+output = 
+<>
+<div>ID:{props.selectedCharger["ID"]}</div>
+<div>Name:{props.selectedCharger["Title"]}</div>
+<div>Charging code:{props.selectedCharger["Code"]}</div>
+<button onClick={() => goChargerView()}>Use this charger.</button>
+</>
 }
 else{
     output="No charger selected"

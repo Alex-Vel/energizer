@@ -28,7 +28,26 @@ class App extends React.Component {
       lng: 25.473127,
       zoom: 13,
       selectedCharger: "",
+      chargerViewSwitch: true,
     };
+  }
+
+  startCharging = () =>
+  {
+    
+  }
+
+  ChargeViewHandler = () =>
+  {
+    console.log("Button been clicked")
+    if(this.state.chargerViewSwitch === true){ 
+      this.setState({chargerViewSwitch:false});
+    }
+    else
+    {
+      this.setState({chargerViewSwitch:true});
+    }
+    console.log(this.state.chargerViewSwitch)
   }
 
   setSelectedCharger= (chosenCharger) =>
@@ -82,12 +101,12 @@ return (
           loginSucces = {this.getChargingData}
           loginFail = { this.onLoginFail }
           userInfo={ this.state.userInfo }
-          redirectPathOnSuccess="/example"
+          redirectPathOnSuccess="/energizer"
           goRegister="/register"
           {...routeProps}
           />
     } />
-    <ProtectedRoute isAuthenticated={this.state.isAuthenticated} path="/example" exact render={
+    <ProtectedRoute isAuthenticated={this.state.isAuthenticated} path="/energizer" exact render={
         (routeProps) =>
           <ProtectedView
             chargingPoints={ this.state.chargingPoints }
@@ -96,6 +115,9 @@ return (
             zoom = {this.state.zoom}
             setSelectedCharger={this.setSelectedCharger}
             selectedCharger={this.state.selectedCharger}
+            logOut={this.state.onLogOut}
+            ChargeViewHandler={this.ChargeViewHandler}
+            viewSwitch={this.state.chargerViewSwitch}
             {...routeProps}
             />
       }>

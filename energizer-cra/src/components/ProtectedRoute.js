@@ -10,7 +10,8 @@ export default function ProtectedRoute(props)
     let output = null;
     if(props.isAuthenticated) {
         output = <Route {...props} />
-    } else {
+    }
+    else {
         output =<Redirect to ="/" />
     }
 
