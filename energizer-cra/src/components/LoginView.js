@@ -7,10 +7,11 @@ export default function LoginView(props) {
   function login(event)
   {
     event.preventDefault();
+    let username = event.target['username'].value;
     Auth.authenticate(event.target['username'].value, event.target['password'].value)
       .then(result =>
         {
-          props.loginSuccess();
+          props.loginSuccess(username);
           props.history.push(props.redirectPathOnSuccess);
         })
       .catch(() => {
@@ -25,7 +26,7 @@ export default function LoginView(props) {
   }
 
   return (
-    <div>
+    <div className="loginView">
       <h1>Login</h1>
       <div>
        Please give your username and password to login
@@ -38,15 +39,16 @@ export default function LoginView(props) {
         <div>
           Password <input type="text" name="password" />
         </div>
-        <div>
+        
           <button type="submit">Login</button>
-        </div>
+
       </form>
 
     <div>
         If you don't have an account yet, please register.
+        </div>
         <button onClick = {goRegister}> Register </button>
-    </div>
+
     <div> 
         
     </div>

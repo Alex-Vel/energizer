@@ -35,16 +35,14 @@ app.post('/register', (req,res) => {
         id: uuidv4(),
         username: req.body.username,
         password: passwordHash,
-        email: req.body.email
+        email: req.body.email,
+        receipts: []
     })
 
     res.sendStatus(200);
 }
 })
 
-app.get('/users', (req,res) => {
-    res.json(users);
-});
 
 passport.use(new passportHttp.BasicStrategy(function(username, password, done) {
     const userResult = users.find(user => user.username === username);
@@ -59,15 +57,20 @@ passport.use(new passportHttp.BasicStrategy(function(username, password, done) {
     
 }));
 
-app.get('/protectedRecource', passport.authenticate('basic', {session: false}), (req,res) => {
-    console.log("final route handler function");
-    console.log(req.user);
-    res.senStatus(200);
+app.get('/userinfo/:name', passport.authenticate('basic', {session: false}), (req,res) => {
+    const result = users.find(user => user.username == req.params.name)
+    console.log(result);
+    res.json(result);
  });
 
 app.post('/login',passport.authenticate('basic', {session:false}), (req,res) => {
     console.log(req.user);
-    res.sendStatus(200);
+    res.json(req.user);
+})
+
+app.post('/login',passport.authenticate('basic', {session:false}), (req,res) => {
+    console.log(req.user);
+    res.json(req.user);
 })
 
 app.listen(port, () => {

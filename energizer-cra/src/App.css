@@ -1,15 +1,57 @@
-.MapClass {
-  width: 50%;
-  height: 50%;
-  margin: auto;
-  display: flex;
-  flex-direction: initial;
-}
-
 .App
 
 {
-  width: 900px;
+  width: 800px;
+  margin: auto;
+ 
+}
+
+body{
+  background-color:lightgray;
+}
+
+
+.MapClass {
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.mainContent {
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+}
+
+.topMenuBar{
+  display: flex;
+  position: sticky;
+  background-color: lightcoral;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 800px;
+  height: 50px;
+  padding: 5px;
   margin: auto;
 }
 
+.loginView
+{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+form
+{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}

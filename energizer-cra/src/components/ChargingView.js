@@ -1,37 +1,72 @@
-import React from 'react';
+import React from "react";
 
 //this returns the users previous consumptions
 export default function ChargingView(props) {
-function startCharging(event) 
-{
+  let output = "";
+
+  function pad(val) {
+    var valString = val + "";
+    if (valString.length < 2) {
+      return "0" + valString;
+    } else {
+      return valString;
+    }
+  }
+
+  function startCharging(event) {
     event.preventDefault();
+    if (event.target["enteredCode"].value === props.selectedCharger["Code"]) {
+      props.startedCharging();
+      console.log("Started charging..");
+    } else {
+      document.getElementById("outputCode").value = "Wrong code entered";
+    }
+  }
 
+  function stopCharging() {
+    props.stoppedCharging();
+  }
 
-}
+  if (props.chargingSwitch === true) {
+    output = (
+      <> 
+        <div>Charger ID: {props.selectedCharger["ID"]}</div>
+        <div>
+        <output type="text" id="minutes">{(pad(parseInt(props.totalSeconds / 60)))}</output>
+      :
+         <output type="text" id="seconds">{(pad(props.totalSeconds % 60))}</output>
+         </div>
+         <div>Price: <output type="text" id="price">{"€" + props.chargingPrice }</output></div>
+        <button onClick={stopCharging}> Stop Charging </button>
+      </>
+    );
+  } else {
+    output = (
+      <>
+        <div>Charger ID: {props.selectedCharger["ID"]}</div>
+        <div>Charger Code: {props.selectedCharger["Code"]}</div>
 
-function stopCharging(event) 
-{
-    event.preventDefault();
+        <button onClick={() => props.ChargeViewHandler()}>
+          Go back to map
+        </button>
 
+        <form onSubmit={startCharging}>
+          <div>
+            Enter Charger code
+            <input type="text" id="enteredCode" name="enteredCode" />
+            <output type="text" id="outputCode" name="codeoutput" />
+          </div>
+          <div>
+            <button type="submit">Start charging!</button>
+          </div>
+        </form>
+      </>
+    );
+  }
 
-}
-
-return (
+  return (
     <>
-    <div className="ChargingBlock">
-    <div>Charger ID: {props.selectedCharger["ID"]}</div>
-    <button onClick={() => props.ChargeViewHandler()}> Go back to map</button>
-    <form onSubmit={ startCharging }>
-        <div>
-          Enter Charger code <input type="text" name="code" />
-        </div>
-        <div>
-          <button type="submit">Start Charging</button>
-        </div>
-      </form>
-      <button onClick={stopCharging}>Stop Charging</button>
-    </div>
+      <div className="ChargingBlock">{output}</div>
     </>
-)
-
+  );
 }

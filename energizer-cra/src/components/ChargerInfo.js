@@ -10,7 +10,7 @@ function goChargerView ()
     props.ChargeViewHandler();
 }
 
-if(props.selectedCharger['ID'] != undefined)
+if(props.selectedCharger['ID'] !== undefined)
 { 
 output = 
 <>

@@ -5,22 +5,8 @@
         "id": "70c618cb-a9a8-43f3-b692-3878a9ec44e1",
         "username": "doe",
         "password": "$2a$08$YIj.vn8QVGYWtOzp.u7acOZgHYM4cVRH13Ws5kbQT4RxKOLbmX4ta", 
-        "email": "john@doe"
+        "email": "john@doe",
+        "receipts": []
         }
-    ],
-
-    "Chargepoints" :
-    [
-        {
-            "id" : 1,
-            "location": "65.009784, 25.473127", 
-            "locationname" : "Oulu"
-        },
-        {
-            "id" : 2,
-            "location": "64.995292, 25.474496", 
-            "locationname" : "Oulu"
-        }
-
     ]
 }

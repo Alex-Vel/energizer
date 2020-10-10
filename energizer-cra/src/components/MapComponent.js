@@ -17,7 +17,7 @@ export default function MapComponent(props)
     <Map
        center={[props.lat, props.lng]} 
        zoom={props.zoom} 
-       style={{ width: '400px', height: '400px'}}
+       style={{ width: '900px', height: '400px'}}
     >
     <TileLayer
       attribution='&copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
