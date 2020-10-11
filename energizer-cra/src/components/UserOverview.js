@@ -1,10 +1,44 @@
 import React from 'react';
-import Auth from './MyAuth';
 
 export default function UserOverview(props) {
 
+    function goMap() {
+        props.history.push(props.goMap);
+    
+      }
+      function Logout() {
+
+          props.LogOut();
+        
+      }
+
 return (
-    <div></div>
+    <>
+      <div className={"topMenuBar"}>
+
+          {" "}
+          User account
+          {props.userData.username}
+          <div>
+          <button onClick={Logout}> Logout </button>
+          <output type="text" id="logoutprompt"></output>
+        </div>
+        </div>
+        <div className ={ "mainContent"}>
+
+
+        <div>
+          <h1>Welcome, {props.userData.username} </h1>
+          <div>
+            <form>
+              <span> UserName: <output type="text" name="username"> {props.userData.username} </output></span>
+               <span> Email: <output type="text" name="email"> { props.userData.email} </output></span>
+            </form>
+          </div>
+            Go back to map <button onClick={goMap}>Map</button>
+      </div>
+      </div>
+    </>
 )
 
 }

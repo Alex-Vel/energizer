@@ -7,7 +7,9 @@ export default function MapComponent(props)
 
   function markerClick(chargingPoint)
   {
+    if(props.isAuthenticated === true){ 
     props.setSelectedCharger(chargingPoint);
+    }
   }
    return(
     props.chargingPoints ?
@@ -34,7 +36,11 @@ return (
          <Popup>
             <span>ADDRESS: {chargingPoint['AddressLine1']}, {chargingPoint['Town']} - {chargingPoint['Postcode']}</span>
           <br/>
-            <span>Wattage: {chargingPoint['PowerKW']}</span><br/>
+            <span>Wattage: {chargingPoint['PowerKW']}</span>
+            <br/>
+            <span>Price:€ 0.{chargingPoint['Price']} per minute </span>
+            <br/>
+            <span> Status: available</span>
          </Popup>
      </Marker>
 

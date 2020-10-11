@@ -7,11 +7,19 @@ export default function ProtectedView(props) {
   let output;
 
   function Logout() {
-    if (props.viewSwitch === false) {
+    if (props.chargingSwitch === true) {
       document.getElementById("logoutprompt").value =
         "cannot logOut while charging";
     } else {
       props.LogOut();
+    }
+  }
+  function goAccount() {
+    if (props.chargingSwitch === true) {
+      document.getElementById("logoutprompt").value =
+        "cannot go to account while charging";
+    } else {
+      props.history.push(props.goAccount);
     }
   }
 
@@ -25,6 +33,7 @@ export default function ProtectedView(props) {
             lng={props.lng}
             zoom={props.zoom}
             setSelectedCharger={props.setSelectedCharger}
+            isAuthenticated ={props.isAuthenticated}
           />
         </div>
         <div>
@@ -38,12 +47,6 @@ export default function ProtectedView(props) {
   } else {
     output = (
       <ChargingView
-        // selectedCharger={props.selectedCharger}
-        // ChargeViewHandler= {props.ChargeViewHandler}
-        // startedCharging = {props.startedCharging}
-        // stoppedCharging = {props.stoppedCharging}
-        // chargingSwitch = {props.chargingSwitch}
-        // totalSeconds ={props.totalSeconds}
         {...props}
       />
     );
@@ -56,6 +59,7 @@ export default function ProtectedView(props) {
           {" "}
           User account
           {props.userData.username}
+          <button onClick={goAccount}>Go to account</button>
           <div>
           <button onClick={Logout}> Logout </button>
           <output type="text" id="logoutprompt"></output>

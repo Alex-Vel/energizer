@@ -1,6 +1,7 @@
   
 import React from 'react';
 import Auth from './MyAuth';
+import MapComponent from './MapComponent'
 
 export default function LoginView(props) {
 
@@ -52,7 +53,13 @@ export default function LoginView(props) {
     <div> 
         
     </div>
-
+    <MapComponent
+            chargingPoints={props.chargingPoints}
+            lat={props.lat}
+            lng={props.lng}
+            zoom={props.zoom}
+            setSelectedCharger={props.setSelectedCharger}
+          />
 
 
     </div>
