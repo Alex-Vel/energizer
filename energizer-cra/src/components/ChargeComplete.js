@@ -4,11 +4,22 @@ import React from 'react';
 
 export default function ChargerInfo(props) {
 
-
+function goMap()
+{
+    props.history.push(props.goMap);
+}
+function goAccount()
+{
+    props.history.push(props.goAccount);
+}
 
 return (
     <>
-    <h1> Charge completed! you'll be redirected to the user profile..  </h1>
+    <div>
+    <h1> Charge completed!</h1>
+    <button onClick={goMap}>Go back to map..</button>
+    <button onClick={goAccount}> go to account </button>
+    </div>
     </>
 )
 }

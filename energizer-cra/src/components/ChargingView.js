@@ -25,6 +25,7 @@ export default function ChargingView(props) {
 
   function stopCharging() {
     props.stoppedCharging();
+    props.history.push(props.chargeComplete)
   }
 
   if (props.chargingSwitch === true) {

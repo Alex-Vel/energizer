@@ -34,6 +34,8 @@ export default function ProtectedView(props) {
             zoom={props.zoom}
             setSelectedCharger={props.setSelectedCharger}
             isAuthenticated ={props.isAuthenticated}
+            searchstring ={props.searchstring}
+            OnSearchChange={props.OnSearchChange}
           />
         </div>
         <div>

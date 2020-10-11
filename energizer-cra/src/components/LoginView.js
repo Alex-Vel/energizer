@@ -17,6 +17,7 @@ export default function LoginView(props) {
         })
       .catch(() => {
         props.loginFail();
+        document.getElementById("loginfail").value= "incorrect password or username";
       })
 
   }
@@ -32,6 +33,7 @@ export default function LoginView(props) {
       <div>
        Please give your username and password to login
       </div>
+     
 
       <form onSubmit={ login }>
         <div>
@@ -42,7 +44,7 @@ export default function LoginView(props) {
         </div>
         
           <button type="submit">Login</button>
-
+          <output type="text" id="loginfail" name="loginfail"></output>
       </form>
 
     <div>
@@ -59,6 +61,8 @@ export default function LoginView(props) {
             lng={props.lng}
             zoom={props.zoom}
             setSelectedCharger={props.setSelectedCharger}
+            searchstring ={props.searchstring}
+            OnSearchChange={props.OnSearchChange}
           />
 
 

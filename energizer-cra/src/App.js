@@ -8,6 +8,7 @@ import ProtectedRoute from "./components/ProtectedRoute";
 import RegisterSucces from "./components/RegisterSucces";
 import UserOverview from "./components/UserOverview";
 import RegisterFail from "./components/RegisterFail";
+import ChargeComplete from "./components/ChargeComplete";
 import Auth from "./components/MyAuth";
 import axios from "axios";
 import constants from "./constants.json";
@@ -34,7 +35,22 @@ class App extends React.Component {
       chargingDone: false,
       priceToPay: 0,
       totalTimeElapsed: 0,
+      searchString: "",
     };
+  }
+
+  onChangeSearch = (searchstring) =>
+  {
+
+    console.log(searchstring);
+
+    this.setState({
+      searchString: searchstring,
+      chargingPoints: (Chargers.filter((chargepoint) =>
+      
+      (chargepoint.Title.toLowerCase().includes(searchstring.toLowerCase()) || chargepoint.AddressLine1.toLowerCase().includes(searchstring.toLowerCase()) )  ))
+    })
+  
   }
 
   useTimer = (maxSeconds) => {
@@ -50,6 +66,7 @@ class App extends React.Component {
   stopCharging = () => {
     this.setState({
       chargingSwitch: false,
+      chargerViewSwitch: true,
       chargingDone: true,
     });
     this.PushReceipt(this.state.chargingPrice, this.state.totalSeconds);
@@ -157,6 +174,8 @@ class App extends React.Component {
                 userInfo={this.state.userInfo}
                 redirectPathOnSuccess="/energizer"
                 goRegister="/register"
+                searchstring = {this.state.searchString}
+                OnSearchChange={this.onChangeSearch}
                 chargingPoints={this.state.chargingPoints}
                 lat={this.state.lat}
                 lng={this.state.lng}
@@ -178,6 +197,8 @@ class App extends React.Component {
                 zoom={this.state.zoom}
                 setSelectedCharger={this.setSelectedCharger}
                 selectedCharger={this.state.selectedCharger}
+                searchstring = {this.state.searchString}
+                OnSearchChange={this.onChangeSearch}
                 userData={this.state.userData}
                 LogOut={this.onLogOut}
                 ChargeViewHandler={this.ChargeViewHandler}
@@ -189,6 +210,7 @@ class App extends React.Component {
                 chargingPrice={this.state.chargingPrice}
                 isAuthenticated ={this.state.isAuthenticated}
                 goAccount="/account"
+                chargeComplete="/chargecomplete"
                 {...routeProps}
               />
             )}
@@ -236,6 +258,18 @@ class App extends React.Component {
               <RegisterFail goRegister="/register" {...routeProps} />
             )}
           />
+
+          <Route
+            path="/chargecomplete"
+            exact
+            render={(routeProps) => (
+              <ChargeComplete 
+              goMap="/energizer"
+              goAccount="/account" 
+              {...routeProps} />
+            )}
+          />
+
         </Router>
       </div>
     );

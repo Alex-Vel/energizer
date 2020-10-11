@@ -3,7 +3,14 @@ import { Map, TileLayer, Marker, Popup } from 'react-leaflet'
 
 export default function MapComponent(props)
 {
-
+ 
+ function onSearchFieldChange()
+ {
+    let newsearchstring =  document.getElementById("searchfield").value ;
+    console.log("keyboard event");
+    console.log(newsearchstring);
+    props.OnSearchChange(newsearchstring);
+  };
 
   function markerClick(chargingPoint)
   {
@@ -48,6 +55,14 @@ return (
  })
 }
 </Map>
+Search:
+          <input
+            type="text"
+            onChange={onSearchFieldChange}
+            name="searchfield"
+            id="searchfield"
+            value={props.searchstring}
+            />
      </div>
        :
        <div>

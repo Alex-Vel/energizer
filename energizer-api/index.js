@@ -94,7 +94,7 @@ app.put(
       Price: req.body.Price,
       Time: req.body.Time,
     });
-    res.status(200);
+    res.json(users[result]["receipts"])
     console.log(users[result]["receipts"])
   }
 );

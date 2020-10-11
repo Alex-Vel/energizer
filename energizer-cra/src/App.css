@@ -10,6 +10,10 @@ body{
   background-color:lightgray;
 }
 
+output
+{
+  color: red;
+}
 
 .MapClass {
   width: 100%;

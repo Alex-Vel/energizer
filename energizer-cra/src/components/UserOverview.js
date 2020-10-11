@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Receipts from './Receipts';
 export default function UserOverview(props) {
 
     function goMap() {
@@ -36,6 +36,12 @@ return (
             </form>
           </div>
             Go back to map <button onClick={goMap}>Map</button>
+      </div>
+      <div>
+      <h2> Receipts: </h2>
+    <Receipts
+    userReceipts = {props.userReceipts}
+    />
       </div>
       </div>
     </>
