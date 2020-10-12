@@ -1,67 +1,64 @@
-  
-import React from 'react';
-import Constants from '../constants.json'
-import axios from 'axios';
+import React from "react";
+import Constants from "../constants.json";
+import axios from "axios";
 
 export default function RegisterView(props) {
-
-  function registersucces()
-  {
+  function registersucces() {
     props.history.push(props.registersucces);
   }
-  function registerfail()
-  {
+  function registerfail() {
     props.history.push(props.registerfail);
   }
 
-  function register(event)
-  {
-
+  function register(event) {
     event.preventDefault();
-
-      axios.post( Constants.baseAddress + '/register', {
-        username: event.target['username'].value,
-        password: event.target['password'].value,
-        email: event.target['email'].value 
-      })
-      .then(function (response) {
-        console.log(response);
-        if (response.status === 200)
-        {registersucces();}
-
-      })
-      .catch(function (error) {
-        console.log(error);
-        registerfail();
-      });
-
+    if (
+      event.target["password"].value === event.target["password2"].value &&
+      event.target["username"].value.length > 0 &&
+      event.target["password"].value.length > 0 &&
+      event.target["email"].value.length > 2
+    ) {
+      axios
+        .post(Constants.baseAddress + "/register", {
+          username: event.target["username"].value,
+          password: event.target["password"].value,
+          email: event.target["email"].value,
+        })
+        .then(function (response) {
+          console.log(response);
+          if (response.status === 200) {
+            registersucces();
+          }
+        })
+        .catch(function (error) {
+          console.log(error);
+          registerfail();
+        });
+    } else {
+      registerfail();
+    }
   }
 
-
   return (
-    <div>
+    <div className="FlexColumn">
       <h1>Registration</h1>
-      <div>
-       Please fill in the form
-      </div>
+      <h3>Please fill in the form</h3>
 
-      <form onSubmit={ register }>
+      <form onSubmit={register}>
         <div>
           Choose Username <input type="text" name="username" />
         </div>
         <div>
           Choose Password <input type="text" name="password" />
+          Repeat Password <input type="text" name="password2" />
         </div>
         <div>
-          Your Email <input type="text" name="email" />
+          Your Email <input type="email" name="email" />
         </div>
         <div>
           <button type="submit">Register</button>
         </div>
       </form>
-
-
-
     </div>
-  )
+  );
 }

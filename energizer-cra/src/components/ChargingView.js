@@ -33,11 +33,12 @@ export default function ChargingView(props) {
       <> 
         <div>Charger ID: {props.selectedCharger["ID"]}</div>
         <div>
-        <output type="text" id="minutes">{(pad(parseInt(props.totalSeconds / 60)))}</output>
+        Time: <output type="text" id="minutes">{(pad(parseInt(props.totalSeconds / 60)))}</output>
       :
          <output type="text" id="seconds">{(pad(props.totalSeconds % 60))}</output>
          </div>
          <div>Price: <output type="text" id="price">{"€" + props.chargingPrice }</output></div>
+         <div>Charge in KW: <output type="text" id="power">{props.totalPower}</output> </div>
         <button onClick={stopCharging}> Stop Charging </button>
       </>
     );
@@ -47,18 +48,20 @@ export default function ChargingView(props) {
         <div>Charger ID: {props.selectedCharger["ID"]}</div>
         <div>Charger Code: {props.selectedCharger["Code"]}</div>
 
-        <button onClick={() => props.ChargeViewHandler()}>
-          Go back to map
-        </button>
+
 
         <form onSubmit={startCharging}>
           <div>
             Enter Charger code
             <input type="text" id="enteredCode" name="enteredCode" />
+            </div>
+            <div>
             <output type="text" id="outputCode" name="codeoutput" />
           </div>
           <div>
-            <button type="submit">Start charging!</button>
+            <button type="submit">Start charging!</button>        <button onClick={() => props.ChargeViewHandler()}>
+          Go back to map
+        </button>
           </div>
         </form>
       </>

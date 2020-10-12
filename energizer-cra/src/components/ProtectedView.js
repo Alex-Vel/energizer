@@ -36,6 +36,7 @@ export default function ProtectedView(props) {
             isAuthenticated ={props.isAuthenticated}
             searchstring ={props.searchstring}
             OnSearchChange={props.OnSearchChange}
+            ChargeViewHandler={props.ChargeViewHandler}
           />
         </div>
         <div>
@@ -57,10 +58,8 @@ export default function ProtectedView(props) {
   return (
     <>
       <div className={"topMenuBar"}>
-
-          {" "}
-          User account
-          {props.userData.username}
+          User:
+          {" " +props.userData.username}
           <button onClick={goAccount}>Go to account</button>
           <div>
           <button onClick={Logout}> Logout </button>
@@ -70,14 +69,12 @@ export default function ProtectedView(props) {
         <div className ={ "mainContent"}>
 
 
-        <div>
-          <h1>This view is example of a protected view</h1>
-          <div>
-            You should not be able to access this without being logged in
-          </div>
+       
+          <h1>Welcome to Energizer!</h1>
+        
+          <h3>Oulu's #1 theoretical charging app.</h3>
 
           {output}
-      </div>
       </div>
     </>
   );

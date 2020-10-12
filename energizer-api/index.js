@@ -93,6 +93,8 @@ app.put(
       Date: new Date(),
       Price: req.body.Price,
       Time: req.body.Time,
+      Charger: req.body.Charger,
+      Power: req.body.Power
     });
     res.json(users[result]["receipts"])
     console.log(users[result]["receipts"])

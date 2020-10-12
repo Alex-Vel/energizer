@@ -13,7 +13,7 @@
     "Distance": 0.14606329438440607,
     "DistanceUnit": 2,
     "ConnectionType": "Type2",
-    "PowerKW": "22kWh",
+    "PowerKW": 22,
     "Price" : 0,
     "Code": "1K52B"
   },
@@ -31,7 +31,7 @@
     "Distance": 0.1961331734920367,
     "DistanceUnit": 2,
     "ConnectionType": "CCS",
-    "PowerKW": "50kWh",
+    "PowerKW": 50,
     "Price" : 15,
     "Code": "GKJ21"
   },
@@ -48,7 +48,7 @@
     "Distance": 0.3931721747720319,
     "DistanceUnit": 2,
     "ConnectionType": "Type2",
-    "PowerKW": "22kWh",
+    "PowerKW": 22,
     "Price" : 0,
     "Code": "SDL12"
   },
@@ -66,7 +66,7 @@
     "Distance": 0.5867021584445613,
     "DistanceUnit": 2,
     "ConnectionType": "CCS",
-    "PowerKW": "100kWh",
+    "PowerKW": 100,
     "Price" : 30,
     "Code": "22KRW"
   },
@@ -84,7 +84,7 @@
     "Distance": 0.945433443485893,
     "DistanceUnit": 2,
     "ConnectionType": "Type2",
-    "PowerKW": "22kWh",
+    "PowerKW": 22,
     "Price" : 0,
     "Code": "ASD32"
   },
@@ -102,7 +102,7 @@
     "Distance": 0.9971528155165518,
     "DistanceUnit": 2,
     "ConnectionType": "Type2",
-    "PowerKW": "22kWh",
+    "PowerKW": 22,
     "Price" : 0,
     "Code": "QWERT"
   },
@@ -120,7 +120,7 @@
     "Distance": 0.9971941265626213,
     "DistanceUnit": 2,
     "ConnectionType": "CCS",
-    "PowerKW": "150kWh",
+    "PowerKW": 150,
     "Price" : 45,
     "Code": "WERT3"
   },
@@ -138,7 +138,7 @@
     "Distance": 1.129933469560573,
     "DistanceUnit": 2,
     "ConnectionType": "Type2",
-    "PowerKW": "22kWh",
+    "PowerKW": 22,
     "Price" : 0,
     "Code": "VBD32"
   },
@@ -156,8 +156,8 @@
     "Distance": 1.206568682654525,
     "DistanceUnit": 2,
     "ConnectionType": "Type2",
-    "PowerKW": "22kWh",
-    "Price" : 0,
+    "PowerKW": 22,
+    "Price" : 0.20,
     "Code": "BLER1"
   },
   {
@@ -174,8 +174,8 @@
     "Distance": 1.9833124183735182,
     "DistanceUnit": 2,
     "ConnectionType": "Type2",
-    "PowerKW": "22kWh",
-    "Price" : 0,
+    "PowerKW": 22,
+    "Price" : 0.20,
     "Code": "OEO22"
   },
   {
@@ -192,7 +192,7 @@
     "Distance": 3.111847633471292,
     "DistanceUnit": 2,
     "ConnectionType": "CCS",
-    "PowerKW": "50kWh",
+    "PowerKW": 50,
     "Price" : 15,
     "Code": "34OFO"
   },
@@ -210,7 +210,7 @@
     "Distance": 3.2633757401296815,
     "DistanceUnit": 2,
     "ConnectionType": "Type2",
-    "PowerKW": "22kWh",
+    "PowerKW": 22,
     "Price" : 0,
     "Code": "PWPWP1"
   },
@@ -228,8 +228,8 @@
     "Distance": 3.4262219181402007,
     "DistanceUnit": 2,
     "ConnectionType": "Type2",
-    "PowerKW": "22kWh",
-    "Price" : 0,
+    "PowerKW": 22,
+    "Price" : 0.20,
     "Code": "PQP12"
   },
   {
@@ -246,7 +246,7 @@
     "Distance": 3.977800791451202,
     "DistanceUnit": 2,
     "ConnectionType": "CCS",
-    "PowerKW": "100kWh",
+    "PowerKW": 100,
     "Price" : 30,
     "Code": "IRI23"
   },
@@ -264,7 +264,7 @@
     "Distance": 6.005709900514121,
     "DistanceUnit": 2,
     "ConnectionType": "Type2",
-    "PowerKW": "22kWh",
+    "PowerKW": 22,
     "Price" : 0,
     "Code": "OSDOV"
   },
@@ -282,7 +282,7 @@
     "Distance": 6.20539031892571,
     "DistanceUnit": 2,
     "ConnectionType": "Type2",
-    "PowerKW": "22kWh",
+    "PowerKW": 22,
     "Price" : 0,
     "Code": "12EEQ"
   },
@@ -298,7 +298,7 @@
     "Distance": 7.59765555345377,
     "DistanceUnit": 2,
     "ConnectionType": "Type2",
-    "PowerKW": "22kWh",
+    "PowerKW": 22,
     "Price" : 0,
     "Code": "BNK11"
   },
@@ -316,7 +316,7 @@
     "Distance": 7.624161458925495,
     "DistanceUnit": 2,
     "ConnectionType": "Type2",
-    "PowerKW": "22kWh",
+    "PowerKW": 22,
     "Price" : 0.20,
     "Code": "NKN33"
   },
@@ -334,7 +334,7 @@
     "Distance": 12.846287732511147,
     "DistanceUnit": 2,
     "ConnectionType": "Type2",
-    "PowerKW": "22kWh",
+    "PowerKW": 22,
     "Price" : 0.20,
     "Code": "OSO14"
     
@@ -352,7 +352,7 @@
     "Distance": 13.990258737833775,
     "DistanceUnit": 2,
     "ConnectionType": "Type2",
-    "PowerKW": "22kWh",
+    "PowerKW": 22, 
     "Price" : 0.20,
     "Code": "OKNO1"
   }

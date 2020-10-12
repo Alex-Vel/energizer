@@ -15,7 +15,7 @@ function goAccount()
 
 return (
     <>
-    <div>
+      <div className ={ "mainContent"}>
     <h1> Charge completed!</h1>
     <button onClick={goMap}>Go back to map..</button>
     <button onClick={goAccount}> go to account </button>

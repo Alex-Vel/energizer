@@ -4,10 +4,9 @@ import { Map, TileLayer, Marker, Popup } from 'react-leaflet'
 export default function MapComponent(props)
 {
  
- function onSearchFieldChange()
+ function onSearchFieldChange(event)
  {
-    let newsearchstring =  document.getElementById("searchfield").value ;
-    console.log("keyboard event");
+    let newsearchstring =   event.target.value;
     console.log(newsearchstring);
     props.OnSearchChange(newsearchstring);
   };
@@ -18,6 +17,30 @@ export default function MapComponent(props)
     props.setSelectedCharger(chargingPoint);
     }
   }
+
+  function goCharge()
+  {
+    props.ChargeViewHandler();
+  }
+
+  function setCharger()
+  {
+    if(props.isAuthenticated === true){ 
+      return ( 
+            <button onClick={goCharge}>Use this charger</button>
+           )
+    }
+    else{
+      return( 
+        <>
+      Please login first
+        </>
+      )
+    }
+  }
+
+    
+    
    return(
     props.chargingPoints ?
 
@@ -41,13 +64,19 @@ export default function MapComponent(props)
 return (
     <Marker onClick={() => markerClick(chargingPoint)} position={point} key={chargingPoint['ID']} >
          <Popup>
-            <span>ADDRESS: {chargingPoint['AddressLine1']}, {chargingPoint['Town']} - {chargingPoint['Postcode']}</span>
+           <span>Name: {chargingPoint['Title']}</span>
+           <br/>
+            <span>Address: {chargingPoint['AddressLine1']}, {chargingPoint['Town']} - {chargingPoint['Postcode']}</span>
           <br/>
             <span>Wattage: {chargingPoint['PowerKW']}</span>
             <br/>
             <span>Price:€ 0.{chargingPoint['Price']} per minute </span>
             <br/>
             <span> Status: available</span>
+            <br/>
+
+            {setCharger()}
+          
          </Popup>
      </Marker>
 

@@ -14,10 +14,12 @@ if(props.selectedCharger['ID'] !== undefined)
 { 
 output = 
 <>
+<div className="mainContent">
 <div>ID:{props.selectedCharger["ID"]}</div>
 <div>Name:{props.selectedCharger["Title"]}</div>
 <div>Charging code:{props.selectedCharger["Code"]}</div>
 <button onClick={() => goChargerView()}>Use this charger.</button>
+</div>
 </>
 }
 else{

@@ -30,6 +30,7 @@ class App extends React.Component {
       chargerViewSwitch: true,
       chargingSwitch: false,
       totalSeconds: 0,
+      totalPower: 0,
       intervalID: "",
       chargingPrice: 0,
       chargingDone: false,
@@ -39,19 +40,24 @@ class App extends React.Component {
     };
   }
 
-  onChangeSearch = (searchstring) =>
-  {
-
+  
+  onChangeSearch = (searchstring) => {
     console.log(searchstring);
 
     this.setState({
       searchString: searchstring,
-      chargingPoints: (Chargers.filter((chargepoint) =>
-      
-      (chargepoint.Title.toLowerCase().includes(searchstring.toLowerCase()) || chargepoint.AddressLine1.toLowerCase().includes(searchstring.toLowerCase()) )  ))
-    })
-  
-  }
+      chargingPoints: Chargers.filter(
+        (chargepoint) =>
+          chargepoint.Title.toLowerCase().includes(
+            searchstring.toLowerCase()
+          ) ||
+          chargepoint.AddressLine1.toLowerCase().includes(
+            searchstring.toLowerCase()
+          ) ||
+          chargepoint.Town.toLowerCase().includes(searchstring.toLowerCase())
+      ),
+    });
+  };
 
   useTimer = (maxSeconds) => {
     this.setState({ intervalID: setInterval(this.setTime(maxSeconds), 1000) });
@@ -69,25 +75,27 @@ class App extends React.Component {
       chargerViewSwitch: true,
       chargingDone: true,
     });
-    this.PushReceipt(this.state.chargingPrice, this.state.totalSeconds);
+    this.PushReceipt(this.state.chargingPrice, this.state.totalSeconds, this.state.totalPower, this.state.selectedCharger);
     this.setState({
       intervalID: clearInterval(this.state.intervalID),
       priceToPay: this.state.chargingPrice,
       totalTimeElapsed: this.state.totalSeconds,
       totalSeconds: 0,
       chargingPrice: 0,
+      totalPower: 0,
       chargingDone: true,
     });
     console.log("Exiting charge mode..");
   };
 
-  setTime = (seconds) => {
+  setTime = () => {
     this.setState({ totalSeconds: this.state.totalSeconds + 1 });
     this.setState({
       chargingPrice: (
-        (this.state.totalSeconds / 1000) *
-        this.state.selectedCharger["Price"]
+        (this.state.totalSeconds / 60) *
+        this.state.selectedCharger["Price"]/100
       ).toFixed(2),
+      totalPower: (this.state.selectedCharger["PowerKW"]/1000 * this.state.totalSeconds).toFixed(2),
     });
     console.log("tick.. " + this.state.totalSeconds);
   };
@@ -107,7 +115,6 @@ class App extends React.Component {
     console.log(this.state.selectedCharger["ID"]);
   };
   onLogin = (user) => {
-    this.getChargingData();
     this.setState({ isAuthenticated: true });
     this.getUserData(user);
   };
@@ -136,13 +143,15 @@ class App extends React.Component {
       });
   }
 
-  PushReceipt = (price, time) => {
+  PushReceipt = (price, time, power, charger ) => {
     axios
       .put(
         constants.baseAddress + "/newreceipt/" + this.state.userData.id,
         {
           Price: price,
           Time: time,
+          Power: power,
+          Charger: charger
         },
         Auth.getAxiosAuth()
       )
@@ -151,13 +160,6 @@ class App extends React.Component {
       });
   };
 
-  getChargingData() {
-    // axios.get('https://api.openchargemap.io/v3/poi/?output=json&countrycode=fi&maxresults=20&compact=true&verbose=false&latitude=65.009784&longitude=25.473127')
-    // .then((response) => {
-    //  this.setState({ chargingPoints: response.data })
-    this.setState({ chargingPoints: Chargers });
-    //  });
-  }
 
   render() {
     return (
@@ -174,13 +176,13 @@ class App extends React.Component {
                 userInfo={this.state.userInfo}
                 redirectPathOnSuccess="/energizer"
                 goRegister="/register"
-                searchstring = {this.state.searchString}
+                searchstring={this.state.searchString}
                 OnSearchChange={this.onChangeSearch}
                 chargingPoints={this.state.chargingPoints}
                 lat={this.state.lat}
                 lng={this.state.lng}
                 zoom={this.state.zoom}
-                isAuthenticated = {this.state.isAuthenticated}
+                isAuthenticated={this.state.isAuthenticated}
                 {...routeProps}
               />
             )}
@@ -197,7 +199,7 @@ class App extends React.Component {
                 zoom={this.state.zoom}
                 setSelectedCharger={this.setSelectedCharger}
                 selectedCharger={this.state.selectedCharger}
-                searchstring = {this.state.searchString}
+                searchstring={this.state.searchString}
                 OnSearchChange={this.onChangeSearch}
                 userData={this.state.userData}
                 LogOut={this.onLogOut}
@@ -207,8 +209,9 @@ class App extends React.Component {
                 startedCharging={this.startCharging}
                 stoppedCharging={this.stopCharging}
                 totalSeconds={this.state.totalSeconds}
+                totalPower={this.state.totalPower}
                 chargingPrice={this.state.chargingPrice}
-                isAuthenticated ={this.state.isAuthenticated}
+                isAuthenticated={this.state.isAuthenticated}
                 goAccount="/account"
                 chargeComplete="/chargecomplete"
                 {...routeProps}
@@ -225,12 +228,12 @@ class App extends React.Component {
                 userData={this.state.userData}
                 LogOut={this.onLogOut}
                 userReceipts={this.state.userReceipts}
-                goMap= "/energizer"
+                goMap="/energizer"
                 {...routeProps}
               />
             )}
           ></ProtectedRoute>
-          
+
           <Route
             path="/register"
             exact
@@ -263,13 +266,13 @@ class App extends React.Component {
             path="/chargecomplete"
             exact
             render={(routeProps) => (
-              <ChargeComplete 
-              goMap="/energizer"
-              goAccount="/account" 
-              {...routeProps} />
+              <ChargeComplete
+                goMap="/energizer"
+                goAccount="/account"
+                {...routeProps}
+              />
             )}
           />
-
         </Router>
       </div>
     );

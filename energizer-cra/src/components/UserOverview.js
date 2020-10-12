@@ -15,10 +15,12 @@ export default function UserOverview(props) {
 return (
     <>
       <div className={"topMenuBar"}>
-
-          {" "}
-          User account
-          {props.userData.username}
+      
+          User: 
+          {" "+props.userData.username}
+          <div>
+          <button onClick={goMap}>Go to map</button>
+          </div>
           <div>
           <button onClick={Logout}> Logout </button>
           <output type="text" id="logoutprompt"></output>
@@ -35,7 +37,6 @@ return (
                <span> Email: <output type="text" name="email"> { props.userData.email} </output></span>
             </form>
           </div>
-            Go back to map <button onClick={goMap}>Map</button>
       </div>
       <div>
       <h2> Receipts: </h2>
