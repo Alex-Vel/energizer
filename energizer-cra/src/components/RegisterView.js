@@ -48,10 +48,15 @@ export default function RegisterView(props) {
         <div>
           Choose Username <input type="text" name="username" />
         </div>
+        <br />
         <div>
           Choose Password <input type="text" name="password" />
+        </div>
+        <div>
           Repeat Password <input type="text" name="password2" />
         </div>
+
+        <br />
         <div>
           Your Email <input type="email" name="email" />
         </div>

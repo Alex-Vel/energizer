@@ -14,7 +14,7 @@
     "DistanceUnit": 2,
     "ConnectionType": "Type2",
     "PowerKW": 22,
-    "Price" : 0,
+    "Price" : "00",
     "Code": "1K52B"
   },
   {
@@ -49,7 +49,7 @@
     "DistanceUnit": 2,
     "ConnectionType": "Type2",
     "PowerKW": 22,
-    "Price" : 0,
+    "Price" : "00",
     "Code": "SDL12"
   },
   {
@@ -85,7 +85,7 @@
     "DistanceUnit": 2,
     "ConnectionType": "Type2",
     "PowerKW": 22,
-    "Price" : 0,
+    "Price" : "00",
     "Code": "ASD32"
   },
   {
@@ -103,7 +103,7 @@
     "DistanceUnit": 2,
     "ConnectionType": "Type2",
     "PowerKW": 22,
-    "Price" : 0,
+    "Price" : "00",
     "Code": "QWERT"
   },
   {
@@ -139,7 +139,7 @@
     "DistanceUnit": 2,
     "ConnectionType": "Type2",
     "PowerKW": 22,
-    "Price" : 0,
+    "Price" : "00",
     "Code": "VBD32"
   },
   {
@@ -157,7 +157,7 @@
     "DistanceUnit": 2,
     "ConnectionType": "Type2",
     "PowerKW": 22,
-    "Price" : 0.20,
+    "Price" : 20,
     "Code": "BLER1"
   },
   {
@@ -175,7 +175,7 @@
     "DistanceUnit": 2,
     "ConnectionType": "Type2",
     "PowerKW": 22,
-    "Price" : 0.20,
+    "Price" : 20,
     "Code": "OEO22"
   },
   {
@@ -211,7 +211,7 @@
     "DistanceUnit": 2,
     "ConnectionType": "Type2",
     "PowerKW": 22,
-    "Price" : 0,
+    "Price" : "00",
     "Code": "PWPWP1"
   },
   {
@@ -229,7 +229,7 @@
     "DistanceUnit": 2,
     "ConnectionType": "Type2",
     "PowerKW": 22,
-    "Price" : 0.20,
+    "Price" : 20,
     "Code": "PQP12"
   },
   {
@@ -265,7 +265,7 @@
     "DistanceUnit": 2,
     "ConnectionType": "Type2",
     "PowerKW": 22,
-    "Price" : 0,
+    "Price" : "00",
     "Code": "OSDOV"
   },
   {
@@ -283,7 +283,7 @@
     "DistanceUnit": 2,
     "ConnectionType": "Type2",
     "PowerKW": 22,
-    "Price" : 0,
+    "Price" : "00",
     "Code": "12EEQ"
   },
   {
@@ -299,7 +299,7 @@
     "DistanceUnit": 2,
     "ConnectionType": "Type2",
     "PowerKW": 22,
-    "Price" : 0,
+    "Price" : "00",
     "Code": "BNK11"
   },
   {
@@ -317,7 +317,7 @@
     "DistanceUnit": 2,
     "ConnectionType": "Type2",
     "PowerKW": 22,
-    "Price" : 0.20,
+    "Price" : 20,
     "Code": "NKN33"
   },
   {
@@ -335,7 +335,7 @@
     "DistanceUnit": 2,
     "ConnectionType": "Type2",
     "PowerKW": 22,
-    "Price" : 0.20,
+    "Price" : 20,
     "Code": "OSO14"
     
   },
@@ -353,7 +353,7 @@
     "DistanceUnit": 2,
     "ConnectionType": "Type2",
     "PowerKW": 22, 
-    "Price" : 0.20,
+    "Price" : 20,
     "Code": "OKNO1"
   }
 ]

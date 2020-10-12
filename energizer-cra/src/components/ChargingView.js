@@ -38,7 +38,7 @@ export default function ChargingView(props) {
          <output type="text" id="seconds">{(pad(props.totalSeconds % 60))}</output>
          </div>
          <div>Price: <output type="text" id="price">{"€" + props.chargingPrice }</output></div>
-         <div>Charge in KW: <output type="text" id="power">{props.totalPower}</output> </div>
+         <div>Charge in kWh: <output type="text" id="power">{props.totalPower}</output> </div>
         <button onClick={stopCharging}> Stop Charging </button>
       </>
     );

@@ -30,13 +30,6 @@ export default function MapComponent(props)
             <button onClick={goCharge}>Use this charger</button>
            )
     }
-    else{
-      return( 
-        <>
-      Please login first
-        </>
-      )
-    }
   }
 
     
@@ -45,7 +38,14 @@ export default function MapComponent(props)
     props.chargingPoints ?
 
      <div className = "mapClass"> 
-     
+     Search:
+          <input
+            type="text"
+            onChange={onSearchFieldChange}
+            name="searchfield"
+            id="searchfield"
+            value={props.searchstring}
+            />
     <Map
        center={[props.lat, props.lng]} 
        zoom={props.zoom} 
@@ -67,8 +67,11 @@ return (
            <span>Name: {chargingPoint['Title']}</span>
            <br/>
             <span>Address: {chargingPoint['AddressLine1']}, {chargingPoint['Town']} - {chargingPoint['Postcode']}</span>
+            <br/>
+            <span>Charge Code: {chargingPoint['Code']}</span>
           <br/>
-            <span>Wattage: {chargingPoint['PowerKW']}</span>
+          <br/>
+            <span>Output: {chargingPoint['PowerKW']}kWh Connector: {chargingPoint['ConnectionType']}</span>
             <br/>
             <span>Price:€ 0.{chargingPoint['Price']} per minute </span>
             <br/>
@@ -84,14 +87,7 @@ return (
  })
 }
 </Map>
-Search:
-          <input
-            type="text"
-            onChange={onSearchFieldChange}
-            name="searchfield"
-            id="searchfield"
-            value={props.searchstring}
-            />
+
      </div>
        :
        <div>
