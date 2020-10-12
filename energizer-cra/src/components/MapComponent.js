@@ -23,12 +23,39 @@ export default function MapComponent(props)
     props.ChargeViewHandler();
   }
 
+  function searchButton(event)
+  {
+    event.preventDefault();
+    if(event.target.id === "all")
+    {
+      props.searchBool("all")
+    }
+    else if(event.target.id ==="free")
+    {
+      props.searchBool("free")
+    }
+    else if(event.target.id ==="fast")
+    {
+      props.searchBool("fast")
+    }
+
+  }
+
   function setCharger()
   {
     if(props.isAuthenticated === true){ 
       return ( 
             <button onClick={goCharge}>Use this charger</button>
            )
+           
+    }
+    else
+    { 
+      return(
+      <>
+      <div className="red"> Please login to charge</div>
+      </>
+      )
     }
   }
 
@@ -38,14 +65,25 @@ export default function MapComponent(props)
     props.chargingPoints ?
 
      <div className = "mapClass"> 
+     <div className="buttonFlex">
+       <div>
      Search:
           <input
             type="text"
             onChange={onSearchFieldChange}
             name="searchfield"
             id="searchfield"
+            style={{margin:"10px"}}
             value={props.searchstring}
             />
+            result: {props.chargingPoints.length} chargers
+            </div>
+            <button className="buttonStyleTwo" onClick={searchButton} id="all"> View all</button>
+            <div>
+            <button className="buttonStyleTwo"  onClick={searchButton} id="free"> Search free</button>
+            <button className="buttonStyleTwo"  onClick={searchButton} id="fast"> Search fast charge</button>
+            </div>
+            </div>
     <Map
        center={[props.lat, props.lng]} 
        zoom={props.zoom} 

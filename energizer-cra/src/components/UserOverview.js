@@ -19,7 +19,7 @@ return (
           User: 
           {" "+props.userData.username}
           <div>
-          <button onClick={goMap}>Go to map</button>
+          <button onClick={goMap}>Go to Energizer</button>
           </div>
           <div>
           <button onClick={Logout}> Logout </button>
@@ -38,10 +38,11 @@ return (
             </form>
           </div>
       </div>
-      <div>
       <h2> Receipts: </h2>
+      <div>
+ 
     <Receipts
-    userReceipts = {props.userReceipts}
+    userReceipts = {props.userReceipts.reverse()}
     />
       </div>
       </div>

@@ -16,9 +16,13 @@ function goAccount()
 return (
     <>
       <div className ={ "mainContent"}>
-    <h1> Charge completed!</h1>
+          <p>You have been</p>
+    <h1>Energized!</h1>
+    <br/>
+    <p>Total price: €{props.receipt.Price}</p>
+    <p>Total power: {props.receipt.Power} kWh</p>
     <button onClick={goMap}>Go back to map..</button>
-    <button onClick={goAccount}> go to account </button>
+    <button onClick={goAccount}> Go to account.. </button>
     </div>
     </>
 )

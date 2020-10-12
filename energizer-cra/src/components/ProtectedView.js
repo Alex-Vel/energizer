@@ -25,7 +25,12 @@ export default function ProtectedView(props) {
 
   if (props.viewSwitch === true) {
     output = (
+      <>
+      <h1>Energizer!</h1>
+        
+      <h3>Oulu's #1 theoretical charging app.</h3>
       <div>
+        
         <div>
           <MapComponent
             chargingPoints={props.chargingPoints}
@@ -37,6 +42,7 @@ export default function ProtectedView(props) {
             searchstring ={props.searchstring}
             OnSearchChange={props.OnSearchChange}
             ChargeViewHandler={props.ChargeViewHandler}
+            searchBool = {props.searchBool}
           />
         </div>
         <div>
@@ -46,12 +52,19 @@ export default function ProtectedView(props) {
           />
         </div>
       </div>
+      </>
     );
   } else {
     output = (
+      <>
+      <h1>{props.selectedCharger.Title}</h1>
+        
+      <h3>{props.selectedCharger.AddressLine1}</h3>
+
       <ChargingView
         {...props}
       />
+      </>
     );
   }
 
@@ -67,12 +80,6 @@ export default function ProtectedView(props) {
         </div>
         </div>
         <div className ={ "mainContent"}>
-
-
-       
-          <h1>Welcome to Energizer!</h1>
-        
-          <h3>Oulu's #1 theoretical charging app.</h3>
 
           {output}
       </div>

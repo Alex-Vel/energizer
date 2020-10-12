@@ -24,7 +24,7 @@ return (
    <ul className = "Receipts">
     {
       props.userReceipts.map(receipt => <li className="Receipt" key={receipt.id} >
-      <div>id: {receipt.id}</div>
+      {/* <div>id: {receipt.id}</div> */}
       <div>date: {formatDate(receipt.Date)} </div>
       <br/>
       <div>charger id: {receipt.Charger.ID}</div>

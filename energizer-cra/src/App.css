@@ -35,10 +35,34 @@ button
   font-size: 12px;
   font-weight: bold;
   margin: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.buttonStyleTwo
+{
+  background-color: lightgreen;
+  font-weight: normal;
+}
+.red
+{
+  color:red;
 }
 output
 {
   color: red;
+}
+input{
+  margin:5px;
+}
+
+.buttonFlex
+{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width:100%;
+  margin: 10px;
 }
 
 .MapClass {
@@ -62,7 +86,7 @@ padding:5px;
 .topMenuBar{
   display: flex;
   position: sticky;
-  background-color: lightcoral;
+  background-color: linen;
   align-items: center;
   justify-content: space-evenly;
   width: 800px;

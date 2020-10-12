@@ -31,9 +31,9 @@ export default function LoginView(props) {
     <div className="loginView">
       <h1>Login</h1>
       <div>
-       Please give your username and password to login
+       Please enter your username and password to login
       </div>
-     
+     <br/>
 
       <form onSubmit={ login }>
         <div>
@@ -42,18 +42,21 @@ export default function LoginView(props) {
         <div>
           Password <input type="text" name="password" />
         </div>
-        
+          <div className="buttonFlex">
           <button type="submit">Login</button>
+          <button onClick = {goRegister}> Register </button>
+         
+          
+          </div>
           <output type="text" id="loginfail" name="loginfail"></output>
       </form>
 
     <div>
-        If you don't have an account yet, please register.
         </div>
-        <button onClick = {goRegister}> Register </button>
+        
 
     <div> 
-        
+        <br/>
     </div>
     <MapComponent
             chargingPoints={props.chargingPoints}
@@ -63,6 +66,7 @@ export default function LoginView(props) {
             setSelectedCharger={props.setSelectedCharger}
             searchstring ={props.searchstring}
             OnSearchChange={props.OnSearchChange}
+            searchBool={props.searchBool}
           />
 
 

@@ -14,33 +14,62 @@ import axios from "axios";
 import constants from "./constants.json";
 import Chargers from "./components/chargers.json";
 
+const initialState = {
+  chargingPoints: Chargers,
+  isAuthenticated: false,
+  userInfo: "",
+  userData: "",
+  userReceipts: [],
+  lat: 65.009784,
+  lng: 25.473127,
+  zoom: 13,
+  selectedCharger: "",
+  chargerViewSwitch: true,
+  chargingSwitch: false,
+  totalSeconds: 0,
+  totalPower: 0,
+  intervalID: "",
+  chargingPrice: 0,
+  chargingDone: false,
+  priceToPay: 0,
+  totalTimeElapsed: 0,
+  searchString: "",
+  searchBool: "",
+};
+
 class App extends React.Component {
+
   constructor(props) {
     super(props);
-    this.state = {
-      chargingPoints: Chargers,
-      isAuthenticated: false,
-      userInfo: "",
-      userData: "",
-      userReceipts: [],
-      lat: 65.009784,
-      lng: 25.473127,
-      zoom: 13,
-      selectedCharger: "",
-      chargerViewSwitch: true,
-      chargingSwitch: false,
-      totalSeconds: 0,
-      totalPower: 0,
-      intervalID: "",
-      chargingPrice: 0,
-      chargingDone: false,
-      priceToPay: 0,
-      totalTimeElapsed: 0,
-      searchString: "",
-    };
+    this.state = 
+    initialState;
+    
   }
 
-  
+
+  searchBool = (term) => {
+    console.log(term);
+    if (term === "fast") {
+      this.setState({
+        chargingPoints: Chargers.filter(
+          (chargepoint) => chargepoint.PowerKW >= 50
+        ),
+      });
+    } else if (term === "free") {
+      this.setState({
+        chargingPoints: Chargers.filter(
+          (chargepoint) => chargepoint.Price === "00"
+        ),
+      });
+    }
+    if (term === "all") {
+      this.setState({
+        chargingPoints: Chargers,
+        searchString: "",
+      });
+    }
+  };
+
   onChangeSearch = (searchstring) => {
     console.log(searchstring);
 
@@ -75,7 +104,12 @@ class App extends React.Component {
       chargerViewSwitch: true,
       chargingDone: true,
     });
-    this.PushReceipt(this.state.chargingPrice, this.state.totalSeconds, this.state.totalPower, this.state.selectedCharger);
+    this.PushReceipt(
+      this.state.chargingPrice,
+      this.state.totalSeconds,
+      this.state.totalPower,
+      this.state.selectedCharger
+    );
     this.setState({
       intervalID: clearInterval(this.state.intervalID),
       priceToPay: this.state.chargingPrice,
@@ -92,10 +126,13 @@ class App extends React.Component {
     this.setState({ totalSeconds: this.state.totalSeconds + 1 });
     this.setState({
       chargingPrice: (
-        (this.state.totalSeconds / 60) *
-        this.state.selectedCharger["Price"]/100
+        ((this.state.totalSeconds / 60) * this.state.selectedCharger["Price"]) /
+        100
       ).toFixed(2),
-      totalPower: (this.state.selectedCharger["PowerKW"]/1000 * this.state.totalSeconds).toFixed(2),
+      totalPower: (
+        (this.state.selectedCharger["PowerKW"] / 1000) *
+        this.state.totalSeconds
+      ).toFixed(2),
     });
     console.log("tick.. " + this.state.totalSeconds);
   };
@@ -127,7 +164,7 @@ class App extends React.Component {
   onLogOut = () => {
     this.setState({ isAuthenticated: false });
     console.log("user Logged out");
-    this.setState({ userInfo: [], userReceipts: [], selectedCharger: [] });
+    this.setState(initialState);
   };
 
   getUserData(username) {
@@ -143,7 +180,7 @@ class App extends React.Component {
       });
   }
 
-  PushReceipt = (price, time, power, charger ) => {
+  PushReceipt = (price, time, power, charger) => {
     axios
       .put(
         constants.baseAddress + "/newreceipt/" + this.state.userData.id,
@@ -151,7 +188,7 @@ class App extends React.Component {
           Price: price,
           Time: time,
           Power: power,
-          Charger: charger
+          Charger: charger,
         },
         Auth.getAxiosAuth()
       )
@@ -159,7 +196,6 @@ class App extends React.Component {
         this.setState({ userReceipts: result.data });
       });
   };
-
 
   render() {
     return (
@@ -183,6 +219,7 @@ class App extends React.Component {
                 lng={this.state.lng}
                 zoom={this.state.zoom}
                 isAuthenticated={this.state.isAuthenticated}
+                searchBool={this.searchBool}
                 {...routeProps}
               />
             )}
@@ -200,6 +237,7 @@ class App extends React.Component {
                 setSelectedCharger={this.setSelectedCharger}
                 selectedCharger={this.state.selectedCharger}
                 searchstring={this.state.searchString}
+                searchBool={this.searchBool}
                 OnSearchChange={this.onChangeSearch}
                 userData={this.state.userData}
                 LogOut={this.onLogOut}
@@ -241,6 +279,7 @@ class App extends React.Component {
               <RegisterView
                 registersucces="/registersucces"
                 registerfail="/registerfail"
+                home="/"
                 {...routeProps}
               />
             )}
@@ -269,6 +308,9 @@ class App extends React.Component {
               <ChargeComplete
                 goMap="/energizer"
                 goAccount="/account"
+                receipt={
+                  this.state.userReceipts[this.state.userReceipts.length - 1]
+                }
                 {...routeProps}
               />
             )}

@@ -31,6 +31,7 @@ export default function ChargingView(props) {
   if (props.chargingSwitch === true) {
     output = (
       <> 
+        <div>Charging.. please dont leave this page while charging.</div>
         <div>Charger ID: {props.selectedCharger["ID"]}</div>
         <div>
         Time: <output type="text" id="minutes">{(pad(parseInt(props.totalSeconds / 60)))}</output>
@@ -46,13 +47,16 @@ export default function ChargingView(props) {
     output = (
       <>
         <div>Charger ID: {props.selectedCharger["ID"]}</div>
-        <div>Charger Code: {props.selectedCharger["Code"]}</div>
+        <div>Price per minute: €0.{props.selectedCharger["Price"]} </div>
+        <div>Output: {props.selectedCharger["PowerKW"]} kWh </div>
+
+        <div style={{fontWeight:"bold"}}>Charger Code: {props.selectedCharger["Code"]}</div>
 
 
 
         <form onSubmit={startCharging}>
           <div>
-            Enter Charger code
+            Repeat Charger code: 
             <input type="text" id="enteredCode" name="enteredCode" />
             </div>
             <div>
