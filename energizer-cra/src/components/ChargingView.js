@@ -4,6 +4,7 @@ import React from "react";
 export default function ChargingView(props) {
   let output = "";
 
+  //display time properly
   function pad(val) {
     var valString = val + "";
     if (valString.length < 2) {
@@ -13,6 +14,7 @@ export default function ChargingView(props) {
     }
   }
 
+  //function when charge is clicked
   function startCharging(event) {
     event.preventDefault();
     if (event.target["enteredCode"].value === props.selectedCharger["Code"]) {
@@ -23,11 +25,12 @@ export default function ChargingView(props) {
     }
   }
 
+  //function when stop charging is clicked
   function stopCharging() {
     props.stoppedCharging();
     props.history.push(props.chargeComplete)
   }
-
+//conditional render
   if (props.chargingSwitch === true) {
     output = (
       <> 

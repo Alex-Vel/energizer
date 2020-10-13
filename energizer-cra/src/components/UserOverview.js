@@ -33,8 +33,8 @@ return (
           <h1>Welcome, {props.userData.username} </h1>
           <div>
             <form>
-              <span> UserName: <output type="text" name="username"> {props.userData.username} </output></span>
-               <span> Email: <output type="text" name="email"> { props.userData.email} </output></span>
+              <span> UserName: {props.userData.username} </span>
+               <span> Email: {props.userData.email} </span>
             </form>
           </div>
       </div>

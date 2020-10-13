@@ -29,7 +29,7 @@ export default function LoginView(props) {
 
   return (
     <div className="loginView">
-      <h1>Login</h1>
+      <h1>Welcome to Energizer!</h1>
       <div>
        Please enter your username and password to login
       </div>

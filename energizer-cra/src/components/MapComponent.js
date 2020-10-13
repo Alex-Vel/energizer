@@ -79,10 +79,10 @@ export default function MapComponent(props)
             result: {props.chargingPoints.length} chargers
             </div>
             <button className="buttonStyleTwo" onClick={searchButton} id="all"> View all</button>
-            <div>
-            <button className="buttonStyleTwo"  onClick={searchButton} id="free"> Search free</button>
-            <button className="buttonStyleTwo"  onClick={searchButton} id="fast"> Search fast charge</button>
-            </div>
+          
+            <button className="buttonStyleTwo"  onClick={searchButton} id="free"> View free</button>
+            <button className="buttonStyleTwo"  onClick={searchButton} id="fast"> View fast charge</button>
+            <div></div>
             </div>
     <Map
        center={[props.lat, props.lng]} 

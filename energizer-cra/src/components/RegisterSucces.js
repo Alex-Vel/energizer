@@ -8,8 +8,10 @@ function GoLogin() {
 
 return (
     <>
+    <div className="mainContent">
     <h1>Registration Succes!</h1>
     <button onClick = {GoLogin}> Go to login </button>
+    </div>
     </>
 )
 

@@ -27,8 +27,7 @@ export default function ProtectedView(props) {
     output = (
       <>
       <h1>Energizer!</h1>
-        
-      <h3>Oulu's #1 theoretical charging app.</h3>
+      <h5>Oulu's #1 theoretical charging app.</h5>
       <div>
         
         <div>

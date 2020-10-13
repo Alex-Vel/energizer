@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Redirect, Route } from "react-router-dom";
 import LoginView from "./components/LoginView";
 import RegisterView from "./components/RegisterView";
 import ProtectedView from "./components/ProtectedView";
@@ -13,6 +13,8 @@ import Auth from "./components/MyAuth";
 import axios from "axios";
 import constants from "./constants.json";
 import Chargers from "./components/chargers.json";
+
+//make start-value state
 
 const initialState = {
   chargingPoints: Chargers,
@@ -28,25 +30,26 @@ const initialState = {
   chargingSwitch: false,
   totalSeconds: 0,
   totalPower: 0,
+  receiptPower: 0,
+  receiptTime: 0,
   intervalID: "",
   chargingPrice: 0,
   chargingDone: false,
-  priceToPay: 0,
-  totalTimeElapsed: 0,
   searchString: "",
   searchBool: "",
 };
 
-class App extends React.Component {
+//constructor
 
+class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = 
-    initialState;
-    
+    this.state = initialState;
   }
 
+  //functions
 
+  //function for search buttons
   searchBool = (term) => {
     console.log(term);
     if (term === "fast") {
@@ -70,6 +73,7 @@ class App extends React.Component {
     }
   };
 
+  //function for searching
   onChangeSearch = (searchstring) => {
     console.log(searchstring);
 
@@ -88,32 +92,36 @@ class App extends React.Component {
     });
   };
 
+  //function to set interval for timer
   useTimer = (maxSeconds) => {
     this.setState({ intervalID: setInterval(this.setTime(maxSeconds), 1000) });
   };
-
+  //start charging function
   startCharging = () => {
     this.setState({ chargingSwitch: true });
     console.log("Started ticking " + this.state.totalSeconds);
     this.setState({ intervalID: setInterval(this.setTime, 1000) });
   };
-
+  //charging stopped function
   stopCharging = () => {
-    this.setState({
-      chargingSwitch: false,
-      chargerViewSwitch: true,
-      chargingDone: true,
-    });
     this.PushReceipt(
       this.state.chargingPrice,
       this.state.totalSeconds,
       this.state.totalPower,
       this.state.selectedCharger
     );
+
+    this.setState({
+      chargingSwitch: false,
+      chargerViewSwitch: true,
+      chargingDone: true,
+    });
+
     this.setState({
       intervalID: clearInterval(this.state.intervalID),
       priceToPay: this.state.chargingPrice,
-      totalTimeElapsed: this.state.totalSeconds,
+      receiptPower: this.state.totalPower,
+      receiptTime: this.state.totalSeconds,
       totalSeconds: 0,
       chargingPrice: 0,
       totalPower: 0,
@@ -121,7 +129,7 @@ class App extends React.Component {
     });
     console.log("Exiting charge mode..");
   };
-
+  //function to set the time, power and price during charging
   setTime = () => {
     this.setState({ totalSeconds: this.state.totalSeconds + 1 });
     this.setState({
@@ -136,7 +144,7 @@ class App extends React.Component {
     });
     console.log("tick.. " + this.state.totalSeconds);
   };
-
+  //function to display between views
   ChargeViewHandler = () => {
     console.log("Button been clicked");
     if (this.state.chargerViewSwitch === true) {
@@ -146,27 +154,28 @@ class App extends React.Component {
     }
     console.log(this.state.chargerViewSwitch);
   };
-
+  //function to select charger
   setSelectedCharger = (chosenCharger) => {
     this.setState({ selectedCharger: chosenCharger });
     console.log(this.state.selectedCharger["ID"]);
   };
+  //login function
   onLogin = (user) => {
     this.setState({ isAuthenticated: true });
     this.getUserData(user);
   };
-
+  //login failfunction
   onLoginFail = () => {
     this.setState({ isAuthenticated: false });
     console.log("Login failed");
   };
-
+  //logout function
   onLogOut = () => {
     this.setState({ isAuthenticated: false });
     console.log("user Logged out");
     this.setState(initialState);
   };
-
+  //axios get userdata
   getUserData(username) {
     axios
       .get(constants.baseAddress + "/userinfo/" + username, Auth.getAxiosAuth())
@@ -179,7 +188,7 @@ class App extends React.Component {
         console.log(this.state.userData);
       });
   }
-
+  //axios push receipt
   PushReceipt = (price, time, power, charger) => {
     axios
       .put(
@@ -308,9 +317,8 @@ class App extends React.Component {
               <ChargeComplete
                 goMap="/energizer"
                 goAccount="/account"
-                receipt={
-                  this.state.userReceipts[this.state.userReceipts.length - 1]
-                }
+                price={this.state.priceToPay}
+                power={this.state.receiptPower}
                 {...routeProps}
               />
             )}

@@ -61,9 +61,10 @@ export default function RegisterView(props) {
           Your Email <input type="email" name="email" />
         </div>
         <div className="buttonFlex">
-          <button onClick={()=>props.history.push(props.home)}>Homepage</button>
+         
           <button type="submit">Register</button>
-       
+          
+          <button onClick={()=>props.history.push(props.home)}>Homepage</button>
         </div>
       </form>
     </div>
